@@ -201,6 +201,7 @@ lib/
  │    ├── sales/
  │    ├── ledger/
  │    └── profile/
+ └── e_commerce_app.dart
  └── main.dart
 ```
 
@@ -209,7 +210,7 @@ lib/
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/adnan-helali1/e_commerce_dashboard.git
 cd project
 flutter pub get
 flutter run
