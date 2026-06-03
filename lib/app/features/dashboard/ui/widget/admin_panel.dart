@@ -37,12 +37,7 @@ class _AdminPanelState extends State<AdminPanel> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-
-      body: Row(
-        children: [
-
+    return 
           /// SIDEBAR
           AnimatedContainer(
             duration: const Duration(milliseconds: 300),
@@ -148,6 +143,7 @@ class _AdminPanelState extends State<AdminPanel> {
                                         : Colors.black87,
                                          ),
                                   ),
+                            
                               ],
                             ),
                           ),
@@ -158,27 +154,7 @@ class _AdminPanelState extends State<AdminPanel> {
                 ),
               ],
             ),
-          ),
-
-          /// CONTENT
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(30),
-
-              child: Center(
-                child: Text(
-                  menuTitles[selectedIndex],
-
-                  style: const TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+         
     );
   }
 }
