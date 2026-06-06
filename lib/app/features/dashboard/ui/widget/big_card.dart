@@ -4,24 +4,50 @@ import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/admin_pane
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/gragh.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/big_container.dart';
-class New extends StatelessWidget {
- final Widget n;
-   const New({
+class BigCard extends StatelessWidget {
+ final Widget childcard;
+ final String title;
+   const BigCard({
     super.key,
-    required this.n,
+    required this.childcard,
+    required this.title,
     });
  @override
   Widget build(BuildContext context) {
     return BigContainer(
-                          height: 500,
-                          width: 550,colorcontainer: Colors.white70,
+                          height: 400,
+                          width: 800,colorcontainer: Colors.white70,
                           children: [Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Column(children: [
-                              Text('Sales Over Time'),
+                            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                               Row(
+        children: [
+          const Icon(Icons.groups_outlined),
+
+          const SizedBox(width: 8),
+
+           Text(title,
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+
+          const Spacer(),
+
+          OutlinedButton(
+            onPressed: () {},
+            child: const Text("View All"),
+          ),
+        ],
+      ),
+
+      const SizedBox(height: 50),
                               SizedBox(height: 200,
                               width: 400,
-                              child: n),
+                              child: childcard),
                              
                             ],),
                           )],

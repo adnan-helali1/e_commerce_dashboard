@@ -1,13 +1,17 @@
-
-import 'package:e_commerce_dashboard/app/core/helpers/spacing.dart';
+ import 'package:e_commerce_dashboard/app/core/helpers/spacing.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/admin_panel.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/big_card.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/big_container.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/circule.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/products.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/recentsalescard.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/square.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/suplier.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/systemalerts.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/dashboard_card.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/gragh.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/suplierproduct.dart';
 
 class DashboardLayout extends StatefulWidget {
   const DashboardLayout({super.key});
@@ -29,12 +33,9 @@ class _DashboardLayoutState extends State<DashboardLayout> {
       Row(
         children: [
           AdminPanel(),
-         //
           Expanded(
             child: Column(
               children: [
-
-                // Header
                 Container(
                   height: 80,
                   padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -83,8 +84,6 @@ class _DashboardLayoutState extends State<DashboardLayout> {
                     ],
                   ),
                 ),
-
-                // Dashboard Content
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(24),
@@ -144,31 +143,73 @@ class _DashboardLayoutState extends State<DashboardLayout> {
                                 ),
                               ],
                             ),
-                          SizedBox(
-                            height: 300,
-                            child: New(n: Gragh(),)),
-                              SizedBox(
-                            height: 300,
-                            child: New(n: Square(data: [10,9,4,0], labels: ["Jan", "Feb", "Mar", "Apr"]),)),
-                             SizedBox(
-                            height: 300,
-                            child: New(n:Circule(
-                              size: 120,
-                              colors: [
-                                Colors.red,
-                                Colors.orange,
-                                Colors.yellow,
-                                Colors.green
-                              ],
-                              stops: [0.25, 0.5, 0.75, 1.0],
-                            )),)
+                           BigCard(title: "Sales Over Time", childcard: Gragh()),
+                             BigCard(title: "Orders by Status", childcard: Square(data: [10,9,4,0], labels: ["Jan", "Feb", "Mar", "Apr"])),
+                             BigCard(title: "Category Distribution", childcard: PieChartScreen()),
+                          /*SizedBox(height:300,
+                          Products(products: 
+                           [
+                            {"name": "Product A", "unitsSold": 150, "profit": 3000},
+                            {"name": "Product B", "unitsSold": 120, "profit": 2400},
+                           ]
+                           ),)*/
+                 SizedBox(
+                  height: 300,
+                  child: RecentSalesCard()),
+                SizedBox(
+          height: 300,
+          child: SupplierProducts(supplierProducts: [{
+            "name": "Potato Chips",
+              "supplier": "Lays",
+              "stock": 67,
+              "price": 1.75,
+          },
+           {"name": "Orange Juice",
+    "supplier": "Fresh Drinks",
+    "stock": 42,
+    "price": 2.50,}]),
+        ),
+                       SizedBox(
+          height: 300,
+          child:Suplier(suppliers: [
+            {
+    "name": "Fresh Foods Ltd",
+    "products": 120,
+    "orders": 35,
+    "status": "Active",
+  },
+  {
+    "name": "Nestle",
+    "products": 85,
+    "orders": 22,
+    "status": "Active",
+  },
+          ])
+          
+          ),
+            SizedBox(
+          height: 300,
+          child: Systemalerts(alerts: [
+            {
+    "title": "Low Stock Warning",
+    "message": "Coca Cola 330ml stock is below 10 units.",
+    "time": "5 min ago",
+    "type": "warning",
+  },
+  {
+    "title": "New Supplier Added",
+    "message": "Fresh Foods Ltd has been added successfully.",
+    "time": "20 min ago",
+    "type": "success",
+  },
+          ])
+          ),
                               ],
                       ),
                     ),
                     ),
                   ),
-                      
-                
+                 
               ],
             ),
           ),
@@ -177,8 +218,7 @@ class _DashboardLayoutState extends State<DashboardLayout> {
    
   }
   Widget _menuItem({
-    required IconData icon,
-    required String title,
+    required IconData icon, required String title,
     bool selected = false,
   }) {
     return Container(
@@ -202,4 +242,3 @@ class _DashboardLayoutState extends State<DashboardLayout> {
     );
   }
 }
-

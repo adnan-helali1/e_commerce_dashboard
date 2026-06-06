@@ -1,7 +1,11 @@
  import 'package:e_commerce_dashboard/app/core/helpers/app_bar_dashboard.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/dashboard_layout.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/admin_panel.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/circule.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/gragh.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/recentsalescard.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/suplierproduct.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/systemalerts.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,9 +25,10 @@ class _DashBoardState extends State<DashBoard> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:Scaffold(
-        body: DashboardLayout(),
-        ),
-    );
+        body: Expanded(
+          child:  DashboardLayout(),
+        )
+    ));
   }
 }
 
