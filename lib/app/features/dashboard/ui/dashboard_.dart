@@ -1,4 +1,5 @@
  import 'package:e_commerce_dashboard/app/core/helpers/app_bar_dashboard.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/dashboard_categories.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/dashboard_layout.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/admin_panel.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/circule.dart';
@@ -26,7 +27,7 @@ class _DashBoardState extends State<DashBoard> {
       debugShowCheckedModeBanner: false,
       home:Scaffold(
         body: Expanded(
-          child:  DashboardLayout(),
+          child:  Categories(),
         )
     ));
   }
