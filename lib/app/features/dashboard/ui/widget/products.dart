@@ -21,8 +21,6 @@ class Products extends StatelessWidget {
         width: 400,
       children:[ Column(
              children: [
-      
-      /// Header
       Row( mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const Icon(Icons.trending_up_rounded),
