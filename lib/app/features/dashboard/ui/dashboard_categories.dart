@@ -1,4 +1,6 @@
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/admin_panel.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/appbar_dashboard.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/header.dart';
 import 'package:flutter/material.dart';
 
 class CategoryModel {
@@ -68,15 +70,14 @@ class Categories extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                AppbarDashboard(),
                 SizedBox(height: 60),
-                 Text(
-          "Categories Management",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
+                Header(title: "Categories Management",
+                 subtitle: "Organize products into categories",
+                 showAddButton: true,buttonText: "Add Categories",
+                 onAddPressed: () {
+                   
+                 },),
                 Expanded(
                   child: ListView.builder(
                     shrinkWrap: true,
