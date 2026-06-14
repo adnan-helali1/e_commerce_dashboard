@@ -1,48 +1,65 @@
 import 'package:flutter/material.dart';
+
 class Header extends StatelessWidget {
-  const Header({super.key});
+  final String title;
+  final String subtitle;
+
+  final bool showAddButton;
+
+  final String buttonText;
+  final VoidCallback? onAddPressed;
+
+  const Header({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    this.showAddButton = true,
+    this.buttonText = "Add",
+    this.onAddPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment:
-          MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Column(
-          crossAxisAlignment:CrossAxisAlignment.start,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Supplier Products",
-              style: TextStyle(
+              title,
+              style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
-              "Manage supplier product offerings and pricing",
-              style: TextStyle(color: Colors.grey),
+              subtitle,
+              style: const TextStyle(
+                color: Colors.grey,
+              ),
             ),
           ],
         ),
-        ElevatedButton.icon(
-          onPressed: () {},
-          icon: const Icon(Icons.add),
-          label: const Text("Add Supplier Offer"),
-          style: ElevatedButton.styleFrom(
-            backgroundColor:
-                const Color(0xff283593),
-            foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 22,
-              vertical: 18,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(12),
+
+        if (showAddButton)
+          ElevatedButton.icon(
+            onPressed: onAddPressed,
+            icon: const Icon(Icons.add),
+            label: Text(buttonText),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xff283593),
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 22,
+                vertical: 18,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
             ),
           ),
-        ),
       ],
     );
   }

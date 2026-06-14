@@ -1,5 +1,7 @@
  import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/admin_panel.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/appbar_dashboard.dart';
 import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/header.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/widget/search_and_filters.dart';
 import 'package:flutter/material.dart';
 class Supplier_Products {
   final int ide;
@@ -71,78 +73,6 @@ class _SupplierProductsPageState
       available: false,
       lastUpdated: DateTime.now(),
     ),
-     Supplier_Products(
-      ide: 3,
-      productName: "Butter 500g",
-      supplierName: "Dairy World",
-      buyPrice: 4.25,
-      stock: 0,
-      available: false,
-      lastUpdated: DateTime.now(),
-    ),
-    Supplier_Products(
-      ide: 3,
-      productName: "Butter 500g",
-      supplierName: "Dairy World",
-      buyPrice: 4.25,
-      stock: 0,
-      available: false,
-      lastUpdated: DateTime.now(),
-    ),
-    Supplier_Products(
-      ide: 3,
-      productName: "Butter 500g",
-      supplierName: "Dairy World",
-      buyPrice: 4.25,
-      stock: 0,
-      available: false,
-      lastUpdated: DateTime.now(),
-    ),
-    Supplier_Products(
-      ide: 3,
-      productName: "Butter 500g",
-      supplierName: "Dairy World",
-      buyPrice: 4.25,
-      stock: 0,
-      available: false,
-      lastUpdated: DateTime.now(),
-    ),
-    Supplier_Products(
-      ide: 3,
-      productName: "Butter 500g",
-      supplierName: "Dairy World",
-      buyPrice: 4.25,
-      stock: 0,
-      available: false,
-      lastUpdated: DateTime.now(),
-    ),
-    Supplier_Products(
-      ide: 3,
-      productName: "Butter 500g",
-      supplierName: "Dairy World",
-      buyPrice: 4.25,
-      stock: 0,
-      available: false,
-      lastUpdated: DateTime.now(),
-    ),
-    Supplier_Products(
-      ide: 3,
-      productName: "Butter 500g",
-      supplierName: "Dairy World",
-      buyPrice: 4.25,
-      stock: 0,
-      available: false,
-      lastUpdated: DateTime.now(),
-    ),
-    Supplier_Products(
-      ide: 3,
-      productName: "Butter 500g",
-      supplierName: "Dairy World",
-      buyPrice: 4.25,
-      stock: 0,
-      available: false,
-      lastUpdated: DateTime.now(),
-    ),
   ];
 
   List<Supplier_Products> get filteredProducts {
@@ -177,7 +107,13 @@ class _SupplierProductsPageState
               Expanded(
                 child: Column(
                   children: [
-                    Header(),
+                    AppbarDashboard(),
+                    Header(title: "Supplier Products",
+                    subtitle: "Manage supplier product offerings and pricing",
+                    showAddButton: true,buttonText: "Add Supplier Offer",
+                    onAddPressed: () {
+                      
+                    },),
                     SizedBox(height: 30,),
                     Expanded(
                       child: Container(
@@ -191,8 +127,19 @@ class _SupplierProductsPageState
                          
                             const SizedBox(height: 40),
                                 
-                            _searchAndFilters(),
-                                
+                           SearchAndFilters(
+                             searchController: searchController,
+                             selectedFilter: selectedFilter,
+                             showFilters: true,
+                             onSearchChanged: (value) {
+                               setState(() {});
+                             },
+                             onFilterChanged: (value) {
+                               setState(() {
+                                 selectedFilter = value;
+                               });
+                            },
+                           ),
                             const SizedBox(height: 40),
                                 
                             Expanded(
@@ -309,71 +256,4 @@ class _SupplierProductsPageState
           ),
  );
   }
-  Widget _searchAndFilters() {
-    return Row(
-      children: [
-        Expanded(
-          child: TextField(
-            controller: searchController,
-            onChanged: (_) => setState(() {}),
-            decoration: InputDecoration(
-              hintText: "Search offers...",
-              prefixIcon:
-                  const Icon(Icons.search),
-              filled: true,
-              fillColor: Colors.grey.shade100,
-              border: OutlineInputBorder(
-                borderRadius:
-                    BorderRadius.circular(12),
-                borderSide: BorderSide.none,
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(width: 16),
-        _filterButton("All"),
-        const SizedBox(width: 8),
-        _filterButton("Available"),
-        const SizedBox(width: 8),
-        _filterButton("Unavailable"),
-      ],
-    );
-  }
-
-  Widget _filterButton(String title) {
-    final isSelected =
-        selectedFilter == title;
-
-    return InkWell(
-      onTap: () {
-        setState(() {
-          selectedFilter = title;
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 18,
-          vertical: 12,
-        ),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? const Color(0xff283593)
-              : Colors.grey.shade100,
-          borderRadius:
-              BorderRadius.circular(12),
-        ),
-        child: Text(
-          title,
-          style: TextStyle(
-            color: isSelected
-                ? Colors.white
-                : Colors.black87,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
+    }
