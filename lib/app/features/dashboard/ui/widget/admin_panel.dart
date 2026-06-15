@@ -1,8 +1,12 @@
 import 'package:e_commerce_dashboard/app/core/helpers/spacing.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/dashboard_categories.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/sales_management.dart';
+import 'package:e_commerce_dashboard/app/features/dashboard/ui/supplier_products_interface.dart';
 
 import 'package:flutter/material.dart';
 class AdminPanel extends StatefulWidget {
-  const AdminPanel({super.key});
+  final int selectedIndex;
+  const AdminPanel({super.key,required this.selectedIndex});
 
   @override
   State<AdminPanel> createState() => _AdminPanelState();
@@ -102,9 +106,37 @@ class _AdminPanelState extends State<AdminPanel> {
                           borderRadius: BorderRadius.circular(14),
 
                           onTap: () {
-                            setState(() {
-                              selectedIndex = index;
+                           setState(() {
+                            selectedIndex = index;
                             });
+                             switch (index) {
+                               
+                                case 2:
+                                  Navigator.pushReplacement(
+                                      context,
+                                       MaterialPageRoute(
+                                     builder: (_) => Categories(),
+                                   ),
+                                  );
+                                         break;
+                                case 4:
+                                    Navigator.pushReplacement(
+                                           context,
+                                     MaterialPageRoute(
+                                  builder: (_) => const SupplierProductsInterface(),
+                                 ),
+                                  );
+                                     break;
+
+                                   case 6:
+                                     Navigator.pushReplacement(
+                                       context,
+                                       MaterialPageRoute(
+                                         builder: (_) =>  SalesManagement(),
+                                       ),
+                                     );
+                                     break;
+                                 }
                           },
 
                           child: Container(

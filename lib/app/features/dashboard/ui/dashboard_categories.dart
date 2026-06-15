@@ -65,7 +65,7 @@ class Categories extends StatelessWidget {
       backgroundColor: Colors.white54,
       body: Row(
         children: [
-          AdminPanel(),
+          AdminPanel(selectedIndex: 2,),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -103,7 +103,7 @@ class _SupplierProductsPageState
       body:
           Row(
             children: [
-              AdminPanel(),
+              AdminPanel(selectedIndex: 4,),
               Expanded(
                 child: Column(
                   children: [

@@ -20,116 +20,118 @@ class _SalesManagementState extends State<SalesManagement> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        AdminPanel(),
-        Expanded(
-          child: Column(
-            children: [
-              AppbarDashboard(),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    color: const Color(0xffF8FAFC),
-                    padding: const EdgeInsets.all(32),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Header(title: "Sales Management",
-                        subtitle: "Monitor and analyze sales transactions",
-                        showAddButton: false,),
-                        const SizedBox(height: 28),
-                        Row(
-                          children: const [
-                            Expanded(
-                              child: SalesCard(
-                                title: "Total Revenue",
-                                value: "\$60.89",
-                                icon: Icons.trending_up_rounded,
-                                iconColor: Color(0xFF10B981),
-                              ),
-                            ),
-                            SizedBox(width: 18),
-                            Expanded(
-                              child: SalesCard(
-                                title: "Total Sales",
-                                value: "3",
-                                icon: Icons.inventory_2_outlined,
-                                iconColor: Color(0xFF6366F1),
-                              ),
-                            ),
-                            SizedBox(width: 18),
-                            Expanded(
-                              child: SalesCard(
-                                title: "Total Profit",
-                                value: "\$22.92",
-                                icon: Icons.show_chart_rounded,
-                                iconColor: Color(0xFFF59E0B),
-                              ),
-                            ),
-                          ],
-                        ),
-                  
-                        const SizedBox(height: 28),
-                         SearchAndFilters(
-                               searchController: searchController,
-                               selectedFilter: null,
-                               showFilters: false,
-                               onSearchChanged: (value) {
-                                 setState(() {});
-                               },
-                               onFilterChanged: (value) {
-                                 setState(() {
-                                   selectedFilter ="";
-                                 });
-                              },
-                             ),
-                             const SizedBox(height: 28),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(24),
-                            border: Border.all(
-                              color: const Color(0xffE5E7EB),
-                            ),
-                          ),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(24),
-                                child: Row(
-                                  children: [
-                                    const Text(
-                                      "Recent Sales",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    FilledButton.icon(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.download_rounded),
-                                      label: const Text("Export"),
-                                    )
-                                  ],
+    return Scaffold(
+      body: Row(
+        children: [
+          AdminPanel(selectedIndex: 6,),
+          Expanded(
+            child: Column(
+              children: [
+                AppbarDashboard(),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      color: const Color(0xffF8FAFC),
+                      padding: const EdgeInsets.all(32),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Header(title: "Sales Management",
+                          subtitle: "Monitor and analyze sales transactions",
+                          showAddButton: false,),
+                          const SizedBox(height: 28),
+                          Row(
+                            children: const [
+                              Expanded(
+                                child: SalesCard(
+                                  title: "Total Revenue",
+                                  value: "\$60.89",
+                                  icon: Icons.trending_up_rounded,
+                                  iconColor: Color(0xFF10B981),
                                 ),
                               ),
-                  
-                              const Divider(height: 1),
-                           SalesList(),
+                              SizedBox(width: 18),
+                              Expanded(
+                                child: SalesCard(
+                                  title: "Total Sales",
+                                  value: "3",
+                                  icon: Icons.inventory_2_outlined,
+                                  iconColor: Color(0xFF6366F1),
+                                ),
+                              ),
+                              SizedBox(width: 18),
+                              Expanded(
+                                child: SalesCard(
+                                  title: "Total Profit",
+                                  value: "\$22.92",
+                                  icon: Icons.show_chart_rounded,
+                                  iconColor: Color(0xFFF59E0B),
+                                ),
+                              ),
                             ],
                           ),
-                        ),
-                      ],
+                    
+                          const SizedBox(height: 28),
+                           SearchAndFilters(
+                                 searchController: searchController,
+                                 selectedFilter: null,
+                                 showFilters: false,
+                                 onSearchChanged: (value) {
+                                   setState(() {});
+                                 },
+                                 onFilterChanged: (value) {
+                                   setState(() {
+                                     selectedFilter ="";
+                                   });
+                                },
+                               ),
+                               const SizedBox(height: 28),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(24),
+                              border: Border.all(
+                                color: const Color(0xffE5E7EB),
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(24),
+                                  child: Row(
+                                    children: [
+                                      const Text(
+                                        "Recent Sales",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      const Spacer(),
+                                      FilledButton.icon(
+                                        onPressed: () {},
+                                        icon: const Icon(Icons.download_rounded),
+                                        label: const Text("Export"),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                    
+                                const Divider(height: 1),
+                             SalesList(),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
